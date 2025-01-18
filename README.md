@@ -8,8 +8,6 @@
 
 2. Add a runtime `pxtorem` function polyfill to process expression embedded in template strings when enable [transformRuntime](#transform-runtime) option.
 
-TypeScript transformer with similar functionality：[typescript-styled-components-pxtorem](https://github.com/hsuna/typescript-styled-components-pxtorem).
-
 ## Table of Contents
 
 - [Requirement](#requirement)
@@ -23,7 +21,6 @@ TypeScript transformer with similar functionality：[typescript-styled-component
   - [MemberExpression](#memberexpression)
   - [ConditionalExpression](#conditionalexpression)
   - [Other Expressions](#other-expressions)
-- [Polyfill](#Polyfill)
 
 ## Requirement
 
@@ -499,13 +496,4 @@ function _pxtorem(input, ...args) {
   var mul = Math.pow(10, 5 + 1);
   return (Math.round(Math.floor(((pixels * 1) / 100) * mul) / 10) * 10) / mul + 'rem';
 }
-```
-
-# Polyfill
-
-Maybe you need import some polyfills from `core-js` only once in your entry file to support outdated user agent like: `iOS 7.x`, `iOS 8.x` and `android 4.x`.
-
-```javascript
-import 'core-js/es/number/is-nan';
-import 'core-js/es/parse-float';
 ```
