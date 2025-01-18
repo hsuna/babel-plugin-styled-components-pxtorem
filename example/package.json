@@ -1,0 +1,35 @@
+{
+  "name": "babel-plugin-styled-components-pxtorem-example",
+  "version": "1.0.0",
+  "description": "Example for babel-plugin-styled-components-pxtorem",
+  "private": true,
+  "keywords": [
+    "pxtorem",
+    "styled-components",
+    "babel"
+  ],
+  "author": "hsuna <me@hsuna.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.26.0",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.0",
+    "@types/postcss-pxtorem": "^6.1.0",
+    "babel-jest": "^29.7.0",
+    "babel-plugin-styled-components-pxtorem": "file:../",
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "postcss": "^8.4.49",
+    "postcss-pxtorem": "^6.1.0"
+  },
+  "scripts": {
+    "build": "babel src/index.jsx --out-dir dist/",
+    "test": "cross-env BABEL_ENV=test jest --no-cache"
+  }
+}

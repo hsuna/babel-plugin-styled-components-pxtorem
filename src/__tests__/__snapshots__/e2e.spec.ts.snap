@@ -1,0 +1,375 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`e2e should support multi-level code blocks 1`] = `
+"const layout1 = styled.div\`
+  & {
+    position: relative;
+  }
+
+  & {
+    footer {
+      height: 0.8rem;
+      background: green;
+    }
+
+    header {
+      height: 0.45rem;
+      background: yellow;
+    }
+  }
+\`;
+const layout2 = styled.div\`
+  & {
+    position: relative;
+  }
+
+  & footer {
+    height: 0.8rem;
+    background: green;
+  }
+
+  & header {
+    height: 0.45rem;
+    background: yellow;
+  }
+\`;
+const layout3 = styled.div\`
+  & footer {
+    height: 0.8rem;
+    background: green;
+  }
+
+  & header {
+    height: 0.45rem;
+    background: yellow;
+  }
+\`;"
+`;
+
+exports[`e2e should transform runtime 1`] = `
+"import React from 'react';
+import styled, { css, createGlobalStyle, keyframes } from 'styled-components';
+const Animation = keyframes\`
+  from {
+    transform: translateX(1rem);
+  }
+
+  to {
+    transform: translateX(-1rem);
+  }
+\`;
+export const FunctionExpression = styled.button\`
+  height: \${(...args) => _pxtorem(function (props) {
+  return props.height;
+}, ...args)};
+\`;
+const height = '44';
+export const ArrowFunction = styled.input.attrs(props => ({
+  type: 'password',
+  size: props.size || \\"0.16rem\\",
+  width: props.width || 100
+}))\`
+  color: palevioletred;
+  font-size: 0.14rem;
+  border: 0.01rem solid palevioletred;
+  border-radius: 0.08rem;
+  width: \${props => _pxtorem(props.width)}; /* PropertyAccess Body */
+  height: \${() => _pxtorem(height)}; /* Identifier Body */
+  line-height: \${() => _pxtorem('44')}; /* StringLiteral Body */
+  margin: \${() => _pxtorem(32)}; /* NumericLiteral Body */
+  padding: \${props => props.size};
+\`;
+export const ArrowFunctionWithBlockBody = styled.button\`
+  width: \${props => _pxtorem(() => {
+  if (props.width) {
+    return props.width;
+  } else {
+    return 0;
+  }
+})}; /* Block Body */
+
+  \${props => props.disabled ? \\"height: 4rem\\" : \\"height: 2rem\\"};
+\`;
+export const ArrowFunctionWithBinaryBody = styled.button\`
+  \${props => props.disabled && \`
+    width: 2rem;
+    font-size: 0.14rem;
+  \`};
+  height: \${props => _pxtorem(!props.disabled && props.height)}; /* ArrowFunction with a LogicalExpression Body */
+  width: \${() => _pxtorem(44 + 50)}; /* ArrowFunction with a BinaryExpression Body */
+\`;
+export const ArrowFunctionWithConditionalBody = styled.button\`
+  height: \${props => props.height ? _pxtorem(height) : _pxtorem(100)}; /* ArrowFunction with a ConditionalExpression Body */
+\`;
+const fontSize = 18;
+function getHeight() {
+  const height = 100;
+  return height / 2;
+}
+const mixins = css\`
+  padding: 0 0.16rem;
+  margin: 0.16rem 0.32rem 0.16rem 0.32rem;
+\`;
+export const GlobalStyle = createGlobalStyle\`
+  html body {
+    \${mixins};
+    font-size: \${_pxtorem(fontSize)}; /* Identifier */
+    width: 10.24rem;
+    height: \${_pxtorem(getHeight())}; /* CallExpression */
+  }
+\`;
+export const StyledButton = styled.button\`
+  width: 1.2rem;
+  height: 0.32rem;
+  font-size: 0.14rem;
+\`;
+export const ExtendStyledButton = styled(StyledButton)\`
+  padding: \${props => _pxtorem(props.padding)};
+\`;
+export const MemberExpression = styled.button(props => \`
+  display: inline;
+  width: \${_pxtorem(props.width)};
+  height: \${props.height};
+  font-size: 0.16rem;
+\`);
+export const ThemeConsumer = styled.div\`
+  font-size: \${props => _pxtorem(props.theme.fontSize)};
+  color: \${props => props.theme.color};
+\`;
+export const ConditionalExpression = function ({
+  fontSize
+} = {}) {
+  const StyledButton = styled.button\`
+    font-size: \${typeof fontSize === 'number' ? _pxtorem(fontSize) : props => _pxtorem(props.theme.fontSize)};
+  \`;
+  return /*#__PURE__*/React.createElement(StyledButton, null);
+};
+export const ConditionalExpressionWhenTrue = function ({
+  fontSize
+} = {}) {
+  const StyledButton = styled.button\`
+    font-size: \${typeof fontSize !== 'number' ? props => _pxtorem(props.theme.fontSize) : _pxtorem(fontSize)};
+  \`;
+  return /*#__PURE__*/React.createElement(StyledButton, null);
+};
+export const ConditionalExpressionWhenFalse = function ({
+  fontSize
+} = {}) {
+  const StyledButton = styled.button\`
+    font-size: \${typeof fontSize === 'number' ? _pxtorem(fontSize) : _pxtorem(16)};
+  \`;
+  return /*#__PURE__*/React.createElement(StyledButton, null);
+};
+const condition = false;
+function calc() {
+  return 20;
+}
+export const BinaryAndLogicExpression = styled.button\`
+  \${condition || \`
+    width: 2rem;
+  \`};
+  height: \${_pxtorem(condition || 100)};
+  padding: \${_pxtorem(40 + 50)};
+  line-height: \${_pxtorem(calc() - 2)};
+\`;
+const Item = styled.div\`
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 0.16rem;
+  font-weight: 400;
+\`;
+const Left = styled(Item)(({
+  icon
+}) => \`
+  flex: 0 0 30%;
+  padding-left: 0.15rem;
+  \${icon ? \`background-position: 0.09rem center;
+     background-repeat: no-repeat;
+     background-size: 0.09rem 0.15rem;
+     padding-left: 0.25rem;
+  \` : ''}
+\`);
+const Foo = function () {}\`
+foo
+\`;
+const Bar = [''][0]\`
+ bar
+\`;
+const ArrayExpressionCallee = [styled](props => \`
+  color: palevioletred;
+  font-size: 14px;
+  border: 1px solid palevioletred;
+  border-radius: 8px;
+  width: \${props.width}px;
+\`);
+function _pxtorem(input, ...args) {
+  if (typeof input === 'function') return _pxtorem(input(...args), ...args);
+  var value = typeof input === 'string' ? parseFloat(input) : typeof input === 'number' ? input : 0;
+  var pixels = Number.isNaN(value) ? 0 : value;
+  if (Math.abs(pixels) < 0) return pixels + 'px';
+  var mul = Math.pow(10, 5 + 1);
+  return Math.round(Math.floor(pixels / 100 * mul) / 10) * 10 / mul + 'rem';
+}"
+`;
+
+exports[`e2e should work 1`] = `
+"import React from 'react';
+import styled, { css, createGlobalStyle, keyframes } from 'styled-components';
+const Animation = keyframes\`
+  from {
+    transform: translateX(1rem);
+  }
+
+  to {
+    transform: translateX(-1rem);
+  }
+\`;
+export const FunctionExpression = styled.button\`
+  height: \${function (props) {
+  return props.height;
+}}px;
+\`;
+const height = '44';
+export const ArrowFunction = styled.input.attrs(props => ({
+  type: 'password',
+  size: props.size || \\"0.16rem\\",
+  width: props.width || 100
+}))\`
+  color: palevioletred;
+  font-size: 0.14rem;
+  border: 0.01rem solid palevioletred;
+  border-radius: 0.08rem;
+  width: \${props => props.width}px; /* PropertyAccess Body */
+  height: \${() => height}px; /* Identifier Body */
+  line-height: \${() => '44'}px; /* StringLiteral Body */
+  margin: \${() => 32}px; /* NumericLiteral Body */
+  padding: \${props => props.size};
+\`;
+export const ArrowFunctionWithBlockBody = styled.button\`
+  width: \${props => {
+  if (props.width) {
+    return props.width;
+  } else {
+    return 0;
+  }
+}}px; /* Block Body */
+
+  \${props => props.disabled ? \\"height: 4rem\\" : \\"height: 2rem\\"};
+\`;
+export const ArrowFunctionWithBinaryBody = styled.button\`
+  \${props => props.disabled && \`
+    width: 2rem;
+    font-size: 0.14rem;
+  \`};
+  height: \${props => !props.disabled && props.height}px; /* ArrowFunction with a LogicalExpression Body */
+  width: \${() => 44 + 50}px; /* ArrowFunction with a BinaryExpression Body */
+\`;
+export const ArrowFunctionWithConditionalBody = styled.button\`
+  height: \${props => props.height ? height : 100}px; /* ArrowFunction with a ConditionalExpression Body */
+\`;
+const fontSize = 18;
+function getHeight() {
+  const height = 100;
+  return height / 2;
+}
+const mixins = css\`
+  padding: 0 0.16rem;
+  margin: 0.16rem 0.32rem 0.16rem 0.32rem;
+\`;
+export const GlobalStyle = createGlobalStyle\`
+  html body {
+    \${mixins};
+    font-size: \${fontSize}px; /* Identifier */
+    width: 10.24rem;
+    height: \${getHeight()}px; /* CallExpression */
+  }
+\`;
+export const StyledButton = styled.button\`
+  width: 1.2rem;
+  height: 0.32rem;
+  font-size: 0.14rem;
+\`;
+export const ExtendStyledButton = styled(StyledButton)\`
+  padding: \${props => props.padding}px;
+\`;
+export const MemberExpression = styled.button(props => \`
+  display: inline;
+  width: \${props.width}px;
+  height: \${props.height};
+  font-size: 0.16rem;
+\`);
+export const ThemeConsumer = styled.div\`
+  font-size: \${props => props.theme.fontSize}px;
+  color: \${props => props.theme.color};
+\`;
+export const ConditionalExpression = function ({
+  fontSize
+} = {}) {
+  const StyledButton = styled.button\`
+    font-size: \${typeof fontSize === 'number' ? fontSize : props => props.theme.fontSize}px;
+  \`;
+  return /*#__PURE__*/React.createElement(StyledButton, null);
+};
+export const ConditionalExpressionWhenTrue = function ({
+  fontSize
+} = {}) {
+  const StyledButton = styled.button\`
+    font-size: \${typeof fontSize !== 'number' ? props => props.theme.fontSize : fontSize}px;
+  \`;
+  return /*#__PURE__*/React.createElement(StyledButton, null);
+};
+export const ConditionalExpressionWhenFalse = function ({
+  fontSize
+} = {}) {
+  const StyledButton = styled.button\`
+    font-size: \${typeof fontSize === 'number' ? fontSize : 16}px;
+  \`;
+  return /*#__PURE__*/React.createElement(StyledButton, null);
+};
+const condition = false;
+function calc() {
+  return 20;
+}
+export const BinaryAndLogicExpression = styled.button\`
+  \${condition || \`
+    width: 2rem;
+  \`};
+  height: \${condition || 100}px;
+  padding: \${40 + 50}px;
+  line-height: \${calc() - 2}px;
+\`;
+const Item = styled.div\`
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 0.16rem;
+  font-weight: 400;
+\`;
+const Left = styled(Item)(({
+  icon
+}) => \`
+  flex: 0 0 30%;
+  padding-left: 0.15rem;
+  \${icon ? \`background-position: 0.09rem center;
+     background-repeat: no-repeat;
+     background-size: 0.09rem 0.15rem;
+     padding-left: 0.25rem;
+  \` : ''}
+\`);
+const Foo = function () {}\`
+foo
+\`;
+const Bar = [''][0]\`
+ bar
+\`;
+const ArrayExpressionCallee = [styled](props => \`
+  color: palevioletred;
+  font-size: 14px;
+  border: 1px solid palevioletred;
+  border-radius: 8px;
+  width: \${props.width}px;
+\`);"
+`;

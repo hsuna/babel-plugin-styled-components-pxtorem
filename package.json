@@ -1,0 +1,80 @@
+{
+  "name": "@hsuna/babel-plugin-styled-components-pxtorem",
+  "version": "1.0.0",
+  "description": "Babel plugin for convert px to rem units of styled-components",
+  "keywords": [
+    "pxtorem",
+    "styled-components",
+    "babel"
+  ],
+  "homepage": "https://github.com/hsuna/babel-plugin-styled-components-pxtorem",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsuna/babel-plugin-styled-components-pxtorem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hsuna/babel-plugin-styled-components-pxtorem/issues"
+  },
+  "author": "hsuna <me@hsuna.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src",
+    "types"
+  ],
+  "directories": {
+    "lib": "lib",
+    "test": "src/__tests__",
+    "example": "example/src"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.26.0",
+    "postcss": "^8.0.0",
+    "postcss-pxtorem": "^6.0.0"
+  },
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.0.0",
+    "memoizerific": "^1.11.3",
+    "postcss-scss": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/template": "^7.25.9",
+    "@babel/traverse": "^7.26.5",
+    "@babel/types": "^7.26.5",
+    "@types/jest": "^24.0.25",
+    "@types/node": "^10.13.0",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.5.0",
+    "postcss": "^8.4.49",
+    "postcss-pxtorem": "^6.1.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.1.0",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "test": "jest --no-cache --coverage",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "build": "tsc -p .",
+    "watch": "tsc -w -p ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "tslint -c tslint.json --fix",
+      "git add"
+    ]
+  }
+}
