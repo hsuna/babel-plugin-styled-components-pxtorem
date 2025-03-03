@@ -7,8 +7,8 @@ import configuration from './configuration';
 const FAKE_OPENING_WRAPPER = 'styled-fake-wrapper/* start of styled-fake-wrapper */{';
 const FAKE_CLOSING_WRAPPER = '}/* end of styled-fake-wrapper */';
 const FAKE_RULE = '/* start of styled-fake-rule */padding:/* end of styled-fake-rule */';
-const GEN_PAIR_REG = (unit: string) => new RegExp(`[\\s\\w-]+:([\\s-\\d]+${unit})+`);
-const GEN_UNIT_REG = (unit: string) => new RegExp(`([\\s-\\d]+${unit})+`);
+const GEN_PAIR_REG = (unit: string) => new RegExp(`[\\s\\w-]+:([\\s-\\d\.]+${unit})+`);
+const GEN_UNIT_REG = (unit: string) => new RegExp(`([\\s-\\d\.]+${unit})+`);
 
 function process(css: string): string {
   const { tags, transformRuntime, ...otherOptions } = configuration.config;
